@@ -1,0 +1,17 @@
+C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\bin\Debug\net6.0-windows\PrzetwarzanieObrazów.exe
+C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\bin\Debug\net6.0-windows\PrzetwarzanieObrazów.deps.json
+C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\bin\Debug\net6.0-windows\PrzetwarzanieObrazów.runtimeconfig.json
+C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\bin\Debug\net6.0-windows\PrzetwarzanieObrazów.dll
+C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\bin\Debug\net6.0-windows\PrzetwarzanieObrazów.pdb
+C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\obj\Debug\net6.0-windows\PrzetwarzanieObrazów.csproj.AssemblyReference.cache
+C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\obj\Debug\net6.0-windows\PrzetwarzanieObrazów.Form1.resources
+C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\obj\Debug\net6.0-windows\PrzetwarzanieObrazów.csproj.GenerateResource.cache
+C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\obj\Debug\net6.0-windows\PrzetwarzanieObrazów.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\obj\Debug\net6.0-windows\PrzetwarzanieObrazów.AssemblyInfoInputs.cache
+C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\obj\Debug\net6.0-windows\PrzetwarzanieObrazów.AssemblyInfo.cs
+C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\obj\Debug\net6.0-windows\PrzetwarzanieObrazów.csproj.CoreCompileInputs.cache
+C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\obj\Debug\net6.0-windows\PrzetwarzanieObrazów.dll
+C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\obj\Debug\net6.0-windows\refint\PrzetwarzanieObrazów.dll
+C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\obj\Debug\net6.0-windows\PrzetwarzanieObrazów.pdb
+C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\obj\Debug\net6.0-windows\PrzetwarzanieObrazów.genruntimeconfig.cache
+C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\obj\Debug\net6.0-windows\ref\PrzetwarzanieObrazów.dll
