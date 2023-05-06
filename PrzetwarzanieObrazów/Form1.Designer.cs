@@ -35,13 +35,20 @@
             statusLabel = new Label();
             processButton = new Button();
             cancelButton = new Button();
+            label1 = new Label();
+            label2 = new Label();
+            Redbutton = new Button();
+            GreenButton = new Button();
+            BlueButton = new Button();
+            YellowButton = new Button();
+            ChosenColorLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)inputPictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)outputPictureBox).BeginInit();
             SuspendLayout();
             // 
             // openButton
             // 
-            openButton.Location = new Point(169, 476);
+            openButton.Location = new Point(12, 565);
             openButton.Name = "openButton";
             openButton.Size = new Size(94, 29);
             openButton.TabIndex = 0;
@@ -51,23 +58,25 @@
             // 
             // inputPictureBox
             // 
-            inputPictureBox.Location = new Point(12, 12);
+            inputPictureBox.BackColor = Color.White;
+            inputPictureBox.Location = new Point(12, 44);
             inputPictureBox.Name = "inputPictureBox";
-            inputPictureBox.Size = new Size(416, 423);
+            inputPictureBox.Size = new Size(625, 512);
             inputPictureBox.TabIndex = 1;
             inputPictureBox.TabStop = false;
             // 
             // outputPictureBox
             // 
-            outputPictureBox.Location = new Point(460, 12);
+            outputPictureBox.BackColor = Color.White;
+            outputPictureBox.Location = new Point(643, 44);
             outputPictureBox.Name = "outputPictureBox";
-            outputPictureBox.Size = new Size(446, 423);
+            outputPictureBox.Size = new Size(625, 512);
             outputPictureBox.TabIndex = 2;
             outputPictureBox.TabStop = false;
             // 
             // progressBar
             // 
-            progressBar.Location = new Point(469, 476);
+            progressBar.Location = new Point(743, 568);
             progressBar.Name = "progressBar";
             progressBar.Size = new Size(125, 29);
             progressBar.TabIndex = 3;
@@ -75,7 +84,9 @@
             // statusLabel
             // 
             statusLabel.AutoSize = true;
-            statusLabel.Location = new Point(611, 485);
+            statusLabel.BackColor = Color.Transparent;
+            statusLabel.ForeColor = SystemColors.Info;
+            statusLabel.Location = new Point(890, 572);
             statusLabel.Name = "statusLabel";
             statusLabel.Size = new Size(47, 20);
             statusLabel.TabIndex = 4;
@@ -83,7 +94,7 @@
             // 
             // processButton
             // 
-            processButton.Location = new Point(269, 476);
+            processButton.Location = new Point(643, 568);
             processButton.Name = "processButton";
             processButton.Size = new Size(94, 29);
             processButton.TabIndex = 5;
@@ -93,18 +104,94 @@
             // 
             // cancelButton
             // 
-            cancelButton.Location = new Point(369, 476);
+            cancelButton.Location = new Point(115, 565);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(94, 29);
             cancelButton.TabIndex = 6;
             cancelButton.Text = "Cancel";
             cancelButton.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.Location = new Point(126, 21);
+            label1.Name = "label1";
+            label1.Size = new Size(106, 20);
+            label1.TabIndex = 7;
+            label1.Text = "Przed obróbką";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
+            label2.Location = new Point(753, 21);
+            label2.Name = "label2";
+            label2.Size = new Size(85, 20);
+            label2.TabIndex = 8;
+            label2.Text = "Po obróbce";
+            // 
+            // Redbutton
+            // 
+            Redbutton.BackColor = Color.Red;
+            Redbutton.Location = new Point(215, 562);
+            Redbutton.Name = "Redbutton";
+            Redbutton.Size = new Size(35, 35);
+            Redbutton.TabIndex = 9;
+            Redbutton.UseVisualStyleBackColor = false;
+            // 
+            // GreenButton
+            // 
+            GreenButton.BackColor = Color.Lime;
+            GreenButton.Location = new Point(256, 562);
+            GreenButton.Name = "GreenButton";
+            GreenButton.Size = new Size(35, 35);
+            GreenButton.TabIndex = 10;
+            GreenButton.UseVisualStyleBackColor = false;
+            // 
+            // BlueButton
+            // 
+            BlueButton.BackColor = Color.Blue;
+            BlueButton.Location = new Point(297, 562);
+            BlueButton.Name = "BlueButton";
+            BlueButton.Size = new Size(35, 35);
+            BlueButton.TabIndex = 11;
+            BlueButton.UseVisualStyleBackColor = false;
+            // 
+            // YellowButton
+            // 
+            YellowButton.BackColor = Color.Yellow;
+            YellowButton.Location = new Point(338, 562);
+            YellowButton.Name = "YellowButton";
+            YellowButton.Size = new Size(35, 35);
+            YellowButton.TabIndex = 12;
+            YellowButton.UseVisualStyleBackColor = false;
+            // 
+            // ChosenColorLabel
+            // 
+            ChosenColorLabel.AutoSize = true;
+            ChosenColorLabel.BackColor = Color.Transparent;
+            ChosenColorLabel.ForeColor = SystemColors.Info;
+            ChosenColorLabel.Location = new Point(392, 569);
+            ChosenColorLabel.Name = "ChosenColorLabel";
+            ChosenColorLabel.Size = new Size(142, 20);
+            ChosenColorLabel.TabIndex = 13;
+            ChosenColorLabel.Text = "Wybrany kolor: Gray";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1017, 527);
+            BackColor = SystemColors.Control;
+            BackgroundImage = Properties.Resources.background;
+            ClientSize = new Size(1275, 603);
+            Controls.Add(ChosenColorLabel);
+            Controls.Add(YellowButton);
+            Controls.Add(BlueButton);
+            Controls.Add(GreenButton);
+            Controls.Add(Redbutton);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(cancelButton);
             Controls.Add(processButton);
             Controls.Add(statusLabel);
@@ -129,5 +216,12 @@
         private Label statusLabel;
         private Button processButton;
         private Button cancelButton;
+        private Label label1;
+        private Label label2;
+        private Button Redbutton;
+        private Button GreenButton;
+        private Button BlueButton;
+        private Button YellowButton;
+        private Label ChosenColorLabel;
     }
 }

@@ -10,6 +10,10 @@ namespace PrzetwarzanieObrazów
             InitializeComponent();
         }
 
+        private void ZmianiaKoloru()
+        {
+            
+        }
         private void openButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
@@ -101,8 +105,10 @@ namespace PrzetwarzanieObrazów
                     for (int x = 0; x < inputImage.Width; x++)
                     {
                         Color pixel = inputImage.GetPixel(x, y);
+
                         int gray = (int)(0.299 * pixel.R + 0.587 * pixel.G + 0.114 * pixel.B);
-                        result.SetPixel(x, y, Color.FromArgb(pixel.A, gray, gray, gray));
+                        // zmiana kororu Color.FromArgb(pixel.A, zmianaKoloru(), zmianaKoloru(), ZmianaKoloru() ));
+                        result.SetPixel(x, y, Color.FromArgb(pixel.A, 255, 128, 64));
                     }
                     int newProgress = (int)((y + 1) * 100.0 / inputImage.Height);
                     if (newProgress > progress)
@@ -153,5 +159,7 @@ namespace PrzetwarzanieObrazów
                 cancellationTokenSource.Cancel();
             };
         }
+
+
     }
 }

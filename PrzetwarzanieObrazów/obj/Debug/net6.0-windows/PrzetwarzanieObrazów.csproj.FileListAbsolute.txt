@@ -15,3 +15,4 @@ C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\Przetwarzanie
 C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\obj\Debug\net6.0-windows\PrzetwarzanieObrazów.pdb
 C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\obj\Debug\net6.0-windows\PrzetwarzanieObrazów.genruntimeconfig.cache
 C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\obj\Debug\net6.0-windows\ref\PrzetwarzanieObrazów.dll
+C:\Users\jakub\Desktop\hawryluk\lab10v2 gimp\PrzetwarzanieObrazów\PrzetwarzanieObrazów\obj\Debug\net6.0-windows\PrzetwarzanieObrazów.Properties.Resources.resources
