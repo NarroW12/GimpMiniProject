@@ -1,9 +1,12 @@
+using System.Windows.Forms;
+
 namespace PrzetwarzanieObrazów
 {
     public partial class Form1 : Form
     {
         private Bitmap inputImage;
         private Bitmap outputImage;
+        private Color chosenColor = Color.Black;
 
         public Form1()
         {
@@ -12,7 +15,7 @@ namespace PrzetwarzanieObrazów
 
         private void ZmianiaKoloru()
         {
-            
+
         }
         private void openButton_Click(object sender, EventArgs e)
         {
@@ -96,7 +99,7 @@ namespace PrzetwarzanieObrazów
 
             // Start processing task
 #pragma warning disable CS8619 // Obsługa wartości null dla typów referencyjnych w wartości jest niezgodna z typem docelowym.
-            Task<Bitmap> processTask = Task.Run(() =>
+            Task<Bitmap> processTask = (Task<Bitmap>)Task.Run(() =>
             {
                 // Do some processing in parallel using multiple threads
                 Bitmap result = inputImage.Clone() as Bitmap;
@@ -106,9 +109,39 @@ namespace PrzetwarzanieObrazów
                     {
                         Color pixel = inputImage.GetPixel(x, y);
 
-                        int gray = (int)(0.299 * pixel.R + 0.587 * pixel.G + 0.114 * pixel.B);
-                        // zmiana kororu Color.FromArgb(pixel.A, zmianaKoloru(), zmianaKoloru(), ZmianaKoloru() ));
-                        result.SetPixel(x, y, Color.FromArgb(pixel.A, 255, 128, 64));
+                        // Change pixel color based on chosenColor
+                        int r, g, b;
+                        if (chosenColor == Color.Red)
+                        {
+                            r = pixel.R;
+                            g = 0;
+                            b = 0;
+                            result.SetPixel(x, y, Color.FromArgb(pixel.A, r, g, b));
+
+                        }
+                        else if (chosenColor == Color.Green)
+                        {
+                            r = 0;
+                            g = pixel.G;
+                            b = 0;
+                        }
+                        else if (chosenColor == Color.Blue)
+                        {
+                            r = 0;
+                            g = 0;
+                            b = pixel.B;
+                        }
+                        else
+                        {
+                            r = pixel.R;
+                            g = pixel.G;
+                            b = pixel.B;
+                        }
+                        // Create new color
+                        Color newColor = Color.FromArgb(pixel.A, r, g, b);
+
+                        // Set new color of pixel
+                        result.SetPixel(x, y, newColor);
                     }
                     int newProgress = (int)((y + 1) * 100.0 / inputImage.Height);
                     if (newProgress > progress)
@@ -119,47 +152,34 @@ namespace PrzetwarzanieObrazów
                     }
                     // Check for cancellation
                     cancellationToken.ThrowIfCancellationRequested();
+
                 }
+
+                // Return modified image
                 return result;
+
             }, cancellationToken);
 #pragma warning restore CS8619 // Obsługa wartości null dla typów referencyjnych w wartości jest niezgodna z typem docelowym.
 
-            // Handle completion and errors
-            processTask.ContinueWith(task =>
-            {
-                if (!task.IsFaulted && !task.IsCanceled)
-                {
-                    // Display the result
-                    outputImage = task.Result;
-                    outputPictureBox.Image = outputImage;
-                    statusLabel.Text = "Processing complete.";
-                }
-                else if (task.IsCanceled)
-                {
-                    // Display cancellation message
-                    statusLabel.Text = "Processing cancelled.";
-                }
-                else
-                {
-                    // Display error message
-                    Exception exception = task.Exception.InnerExceptions[0];
-                    MessageBox.Show("An error occurred: " + exception.Message);
-                    statusLabel.Text = "An error occurred: " + exception.Message;
-                }
-                // Enable buttons
-                openButton.Enabled = true;
-                processButton.Enabled = true;
-                // Disable cancel button
-                cancelButton.Enabled = false;
-            }, TaskScheduler.FromCurrentSynchronizationContext());
-            // Set up cancel button
-            cancelButton.Click += (cancelSender, cancelArgs) =>
-            {
-                cancelButton.Enabled = false;
-                cancellationTokenSource.Cancel();
-            };
+
         }
 
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            // Wyświetlenie dialogu zapisu pliku
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Pliki obrazów (*.bmp, *.jpg, *.jpeg, *.png)|*.bmp;*.jpg;*.jpeg;*.png";
+            saveFileDialog.Title = "Zapisz obraz";
+            saveFileDialog.ShowDialog();
 
+            // Jeśli użytkownik wybrał plik i kliknął OK
+            if (saveFileDialog.FileName != "")
+            {
+                // Zapisanie obrazu z kontrolki PictureBox do pliku
+                outputPictureBox.Image.Save(saveFileDialog.FileName);
+                MessageBox.Show("Pomyślnie zapisano obraz.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+        }
     }
 }
