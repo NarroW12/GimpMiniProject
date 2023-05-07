@@ -270,7 +270,6 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Form1";
             Text = "LepszyGIMP";
-            TopMost = true;
             WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)inputPictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)outputPictureBox).EndInit();

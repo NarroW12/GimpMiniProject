@@ -38,6 +38,8 @@ namespace PrzetwarzanieObrazów
                 outputPictureBox.Image = null;
                 progressBar.Value = 0;
                 statusLabel.Text = "Loaded image: " + dialog.FileName;
+                HeightTextBox.Text = inputImage.Height.ToString();
+                widthTextBox.Text = inputImage.Width.ToString();
             }
 
         }
@@ -113,14 +115,13 @@ namespace PrzetwarzanieObrazów
             {
                 // Do some processing in parallel using multiple threads
                 Bitmap result = inputImage.Clone() as Bitmap;
-                HeightTextBox.Text = inputImage.Height.ToString();
-                widthTextBox.Text = inputImage.Width.ToString();
+
                 for (int y = 0; y < inputImage.Height; y++)
                 {
                     for (int x = 0; x < inputImage.Width; x++)
                     {
                         Color pixel = inputImage.GetPixel(x, y);
-                        
+
                         if (KolorObrazuCheckBox.Checked)
                         {
                             int gray = (int)(0.299 * pixel.R + 0.587 * pixel.G + 0.114 * pixel.B);
@@ -129,8 +130,10 @@ namespace PrzetwarzanieObrazów
                         }
                         else if (SizeChengeCheckBox.Checked)
                         {
-
-                            ResizeImage(inputImage, x, y);
+                            int newWidth = int.Parse(widthTextBox.Text);
+                            int newHeight = int.Parse(HeightTextBox.Text);
+                            Bitmap resizedImage = (Bitmap)ResizeImage(inputImage, newWidth, newHeight);
+                            Bitmap Sizeresult = resizedImage.Clone() as Bitmap;
                         }
                     }
                     int newProgress = (int)((y + 1) * 100.0 / inputImage.Height);
