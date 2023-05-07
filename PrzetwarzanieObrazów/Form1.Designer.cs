@@ -44,6 +44,10 @@
             ChosenColorLabel = new Label();
             SaveButton = new Button();
             BlackButton = new Button();
+            KolorObrazuCheckBox = new CheckBox();
+            SizeChengeCheckBox = new CheckBox();
+            HeightTextBox = new TextBox();
+            widthTextBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)inputPictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)outputPictureBox).BeginInit();
             SuspendLayout();
@@ -78,7 +82,7 @@
             // 
             // progressBar
             // 
-            progressBar.Location = new Point(883, 924);
+            progressBar.Location = new Point(940, 919);
             progressBar.Name = "progressBar";
             progressBar.Size = new Size(125, 29);
             progressBar.TabIndex = 3;
@@ -88,7 +92,7 @@
             statusLabel.AutoSize = true;
             statusLabel.BackColor = Color.Transparent;
             statusLabel.ForeColor = SystemColors.Info;
-            statusLabel.Location = new Point(1014, 924);
+            statusLabel.Location = new Point(1071, 919);
             statusLabel.Name = "statusLabel";
             statusLabel.Size = new Size(47, 20);
             statusLabel.TabIndex = 4;
@@ -96,7 +100,7 @@
             // 
             // processButton
             // 
-            processButton.Location = new Point(746, 924);
+            processButton.Location = new Point(803, 919);
             processButton.Name = "processButton";
             processButton.Size = new Size(94, 29);
             processButton.TabIndex = 5;
@@ -129,7 +133,7 @@
             label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Times New Roman", 13.8F, FontStyle.Italic, GraphicsUnit.Point);
-            label2.Location = new Point(1018, 57);
+            label2.Location = new Point(1018, 37);
             label2.Name = "label2";
             label2.Size = new Size(121, 26);
             label2.TabIndex = 8;
@@ -138,7 +142,7 @@
             // Redbutton
             // 
             Redbutton.BackColor = Color.Red;
-            Redbutton.Location = new Point(251, 921);
+            Redbutton.Location = new Point(826, 966);
             Redbutton.Name = "Redbutton";
             Redbutton.Size = new Size(35, 35);
             Redbutton.TabIndex = 9;
@@ -147,7 +151,7 @@
             // GreenButton
             // 
             GreenButton.BackColor = Color.Lime;
-            GreenButton.Location = new Point(292, 921);
+            GreenButton.Location = new Point(867, 966);
             GreenButton.Name = "GreenButton";
             GreenButton.Size = new Size(35, 35);
             GreenButton.TabIndex = 10;
@@ -156,7 +160,7 @@
             // BlueButton
             // 
             BlueButton.BackColor = Color.Blue;
-            BlueButton.Location = new Point(333, 921);
+            BlueButton.Location = new Point(908, 966);
             BlueButton.Name = "BlueButton";
             BlueButton.Size = new Size(35, 35);
             BlueButton.TabIndex = 11;
@@ -165,7 +169,7 @@
             // YellowButton
             // 
             YellowButton.BackColor = Color.Yellow;
-            YellowButton.Location = new Point(374, 921);
+            YellowButton.Location = new Point(949, 966);
             YellowButton.Name = "YellowButton";
             YellowButton.Size = new Size(35, 35);
             YellowButton.TabIndex = 12;
@@ -176,7 +180,7 @@
             ChosenColorLabel.AutoSize = true;
             ChosenColorLabel.BackColor = Color.Transparent;
             ChosenColorLabel.ForeColor = SystemColors.Info;
-            ChosenColorLabel.Location = new Point(490, 936);
+            ChosenColorLabel.Location = new Point(587, 928);
             ChosenColorLabel.Name = "ChosenColorLabel";
             ChosenColorLabel.Size = new Size(142, 20);
             ChosenColorLabel.TabIndex = 13;
@@ -195,11 +199,46 @@
             // BlackButton
             // 
             BlackButton.BackColor = Color.Black;
-            BlackButton.Location = new Point(415, 921);
+            BlackButton.Location = new Point(990, 966);
             BlackButton.Name = "BlackButton";
             BlackButton.Size = new Size(35, 35);
             BlackButton.TabIndex = 15;
             BlackButton.UseVisualStyleBackColor = false;
+            // 
+            // KolorObrazuCheckBox
+            // 
+            KolorObrazuCheckBox.AutoSize = true;
+            KolorObrazuCheckBox.Location = new Point(254, 924);
+            KolorObrazuCheckBox.Name = "KolorObrazuCheckBox";
+            KolorObrazuCheckBox.Size = new Size(232, 24);
+            KolorObrazuCheckBox.TabIndex = 16;
+            KolorObrazuCheckBox.Text = "Czy obraz ma być czarno biały";
+            KolorObrazuCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // SizeChengeCheckBox
+            // 
+            SizeChengeCheckBox.AutoSize = true;
+            SizeChengeCheckBox.BackgroundImageLayout = ImageLayout.None;
+            SizeChengeCheckBox.Location = new Point(254, 962);
+            SizeChengeCheckBox.Name = "SizeChengeCheckBox";
+            SizeChengeCheckBox.Size = new Size(214, 24);
+            SizeChengeCheckBox.TabIndex = 17;
+            SizeChengeCheckBox.Text = "Czy zmienić rozmiar obrazu";
+            SizeChengeCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // HeightTextBox
+            // 
+            HeightTextBox.Location = new Point(526, 959);
+            HeightTextBox.Name = "HeightTextBox";
+            HeightTextBox.Size = new Size(125, 27);
+            HeightTextBox.TabIndex = 18;
+            // 
+            // widthTextBox
+            // 
+            widthTextBox.Location = new Point(657, 959);
+            widthTextBox.Name = "widthTextBox";
+            widthTextBox.Size = new Size(125, 27);
+            widthTextBox.TabIndex = 19;
             // 
             // Form1
             // 
@@ -208,6 +247,10 @@
             BackColor = SystemColors.Control;
             BackgroundImage = Properties.Resources.background;
             ClientSize = new Size(1902, 1033);
+            Controls.Add(widthTextBox);
+            Controls.Add(HeightTextBox);
+            Controls.Add(SizeChengeCheckBox);
+            Controls.Add(KolorObrazuCheckBox);
             Controls.Add(BlackButton);
             Controls.Add(SaveButton);
             Controls.Add(ChosenColorLabel);
@@ -253,5 +296,9 @@
         private Label ChosenColorLabel;
         private Button SaveButton;
         private Button BlackButton;
+        private CheckBox KolorObrazuCheckBox;
+        private CheckBox SizeChengeCheckBox;
+        private TextBox HeightTextBox;
+        private TextBox widthTextBox;
     }
 }

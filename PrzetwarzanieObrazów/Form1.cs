@@ -12,11 +12,21 @@ namespace PrzetwarzanieObrazów
         {
             InitializeComponent();
         }
-
-        private void ZmianiaKoloru()
+        public Image ResizeImage(Image inputImage, int width, int height)
         {
+            // Create a new Bitmap with the desired width and height
+            Bitmap resizedImage = new Bitmap(width, height);
 
+            // Resize the inputImage using the Graphics class
+            using (Graphics graphics = Graphics.FromImage(resizedImage))
+            {
+                graphics.DrawImage(inputImage, 0, 0, width, height);
+            }
+
+            return resizedImage;
         }
+
+
         private void openButton_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
@@ -99,49 +109,29 @@ namespace PrzetwarzanieObrazów
 
             // Start processing task
 #pragma warning disable CS8619 // Obsługa wartości null dla typów referencyjnych w wartości jest niezgodna z typem docelowym.
-            Task<Bitmap> processTask = (Task<Bitmap>)Task.Run(() =>
+            Task<Bitmap> processTask = Task.Run(() =>
             {
                 // Do some processing in parallel using multiple threads
                 Bitmap result = inputImage.Clone() as Bitmap;
+                HeightTextBox.Text = inputImage.Height.ToString();
+                widthTextBox.Text = inputImage.Width.ToString();
                 for (int y = 0; y < inputImage.Height; y++)
                 {
                     for (int x = 0; x < inputImage.Width; x++)
                     {
                         Color pixel = inputImage.GetPixel(x, y);
+                        
+                        if (KolorObrazuCheckBox.Checked)
+                        {
+                            int gray = (int)(0.299 * pixel.R + 0.587 * pixel.G + 0.114 * pixel.B);
+                            // zmiana kororu Color.FromArgb(pixel.A, zmianaKoloru(), zmianaKoloru(), ZmianaKoloru() ));
+                            result.SetPixel(x, y, Color.FromArgb(pixel.A, gray, gray, gray));
+                        }
+                        else if (SizeChengeCheckBox.Checked)
+                        {
 
-                        // Change pixel color based on chosenColor
-                        int r, g, b;
-                        if (chosenColor == Color.Red)
-                        {
-                            r = pixel.R;
-                            g = 0;
-                            b = 0;
-                            result.SetPixel(x, y, Color.FromArgb(pixel.A, r, g, b));
-
+                            ResizeImage(inputImage, x, y);
                         }
-                        else if (chosenColor == Color.Green)
-                        {
-                            r = 0;
-                            g = pixel.G;
-                            b = 0;
-                        }
-                        else if (chosenColor == Color.Blue)
-                        {
-                            r = 0;
-                            g = 0;
-                            b = pixel.B;
-                        }
-                        else
-                        {
-                            r = pixel.R;
-                            g = pixel.G;
-                            b = pixel.B;
-                        }
-                        // Create new color
-                        Color newColor = Color.FromArgb(pixel.A, r, g, b);
-
-                        // Set new color of pixel
-                        result.SetPixel(x, y, newColor);
                     }
                     int newProgress = (int)((y + 1) * 100.0 / inputImage.Height);
                     if (newProgress > progress)
@@ -152,15 +142,45 @@ namespace PrzetwarzanieObrazów
                     }
                     // Check for cancellation
                     cancellationToken.ThrowIfCancellationRequested();
-
                 }
-
-                // Return modified image
                 return result;
-
             }, cancellationToken);
 #pragma warning restore CS8619 // Obsługa wartości null dla typów referencyjnych w wartości jest niezgodna z typem docelowym.
 
+            // Handle completion and errors
+            processTask.ContinueWith(task =>
+            {
+                if (!task.IsFaulted && !task.IsCanceled)
+                {
+                    // Display the result
+                    outputImage = task.Result;
+                    outputPictureBox.Image = outputImage;
+                    statusLabel.Text = "Processing complete.";
+                }
+                else if (task.IsCanceled)
+                {
+                    // Display cancellation message
+                    statusLabel.Text = "Processing cancelled.";
+                }
+                else
+                {
+                    // Display error message
+                    Exception exception = task.Exception.InnerExceptions[0];
+                    MessageBox.Show("An error occurred: " + exception.Message);
+                    statusLabel.Text = "An error occurred: " + exception.Message;
+                }
+                // Enable buttons
+                openButton.Enabled = true;
+                processButton.Enabled = true;
+                // Disable cancel button
+                cancelButton.Enabled = false;
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+            // Set up cancel button
+            cancelButton.Click += (cancelSender, cancelArgs) =>
+            {
+                cancelButton.Enabled = false;
+                cancellationTokenSource.Cancel();
+            };
 
         }
 
