@@ -14,16 +14,19 @@ namespace PrzetwarzanieObrazów
         }
         public Image ResizeImage(Image inputImage, int width, int height)
         {
-            // Create a new Bitmap with the desired width and height
-            Bitmap resizedImage = new Bitmap(width, height);
+            Bitmap resizedBitmap = new Bitmap(width, height);
 
-            // Resize the inputImage using the Graphics class
-            using (Graphics graphics = Graphics.FromImage(resizedImage))
+            using (Graphics graphics = Graphics.FromImage(resizedBitmap))
             {
+                // Ustaw tryb wygładzania
+                graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+
+                // Skopiuj obraz do nowego obrazu z zachowaniem proporcji
                 graphics.DrawImage(inputImage, 0, 0, width, height);
             }
 
-            return resizedImage;
+            return resizedBitmap;
         }
 
 
@@ -130,10 +133,17 @@ namespace PrzetwarzanieObrazów
                         }
                         else if (SizeChengeCheckBox.Checked)
                         {
-                            int newWidth = int.Parse(widthTextBox.Text);
-                            int newHeight = int.Parse(HeightTextBox.Text);
-                            Bitmap resizedImage = (Bitmap)ResizeImage(inputImage, newWidth, newHeight);
-                            Bitmap Sizeresult = resizedImage.Clone() as Bitmap;
+                            int newWidth = 0;
+                            int newHeight = 0;
+                            if (!int.TryParse(widthTextBox.Text, out  newWidth) || !int.TryParse(HeightTextBox.Text, out  newHeight))
+                            {
+                                MessageBox.Show("Podano nieprawidłowe wartości szerokości i/lub wysokości.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                //return;
+                            }
+                            Image resizedImage = ResizeImage(inputPictureBox.Image, newWidth, newHeight);
+                         
+                            outputPictureBox.Image = resizedImage;
+
                         }
                     }
                     int newProgress = (int)((y + 1) * 100.0 / inputImage.Height);
@@ -203,6 +213,12 @@ namespace PrzetwarzanieObrazów
                 MessageBox.Show("Pomyślnie zapisano obraz.", "Informacja", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
+        }
+
+        private void HelperButton_Click(object sender, EventArgs e)
+        {
+            Helper helper = new Helper();
+            helper.ShowDialog();
         }
     }
 }

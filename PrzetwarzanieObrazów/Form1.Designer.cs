@@ -37,13 +37,9 @@
             cancelButton = new Button();
             label1 = new Label();
             label2 = new Label();
-            Redbutton = new Button();
-            GreenButton = new Button();
-            BlueButton = new Button();
-            YellowButton = new Button();
+            HelperButton = new Button();
             ChosenColorLabel = new Label();
             SaveButton = new Button();
-            BlackButton = new Button();
             KolorObrazuCheckBox = new CheckBox();
             SizeChengeCheckBox = new CheckBox();
             HeightTextBox = new TextBox();
@@ -68,6 +64,7 @@
             inputPictureBox.Location = new Point(48, 86);
             inputPictureBox.Name = "inputPictureBox";
             inputPictureBox.Size = new Size(872, 805);
+            inputPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             inputPictureBox.TabIndex = 1;
             inputPictureBox.TabStop = false;
             // 
@@ -77,6 +74,7 @@
             outputPictureBox.Location = new Point(1018, 86);
             outputPictureBox.Name = "outputPictureBox";
             outputPictureBox.Size = new Size(872, 805);
+            outputPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             outputPictureBox.TabIndex = 2;
             outputPictureBox.TabStop = false;
             // 
@@ -139,52 +137,26 @@
             label2.TabIndex = 8;
             label2.Text = "Po obróbce";
             // 
-            // Redbutton
+            // HelperButton
             // 
-            Redbutton.BackColor = Color.Red;
-            Redbutton.Location = new Point(826, 966);
-            Redbutton.Name = "Redbutton";
-            Redbutton.Size = new Size(35, 35);
-            Redbutton.TabIndex = 9;
-            Redbutton.UseVisualStyleBackColor = false;
-            // 
-            // GreenButton
-            // 
-            GreenButton.BackColor = Color.Lime;
-            GreenButton.Location = new Point(867, 966);
-            GreenButton.Name = "GreenButton";
-            GreenButton.Size = new Size(35, 35);
-            GreenButton.TabIndex = 10;
-            GreenButton.UseVisualStyleBackColor = false;
-            // 
-            // BlueButton
-            // 
-            BlueButton.BackColor = Color.Blue;
-            BlueButton.Location = new Point(908, 966);
-            BlueButton.Name = "BlueButton";
-            BlueButton.Size = new Size(35, 35);
-            BlueButton.TabIndex = 11;
-            BlueButton.UseVisualStyleBackColor = false;
-            // 
-            // YellowButton
-            // 
-            YellowButton.BackColor = Color.Yellow;
-            YellowButton.Location = new Point(949, 966);
-            YellowButton.Name = "YellowButton";
-            YellowButton.Size = new Size(35, 35);
-            YellowButton.TabIndex = 12;
-            YellowButton.UseVisualStyleBackColor = false;
+            HelperButton.Location = new Point(151, 956);
+            HelperButton.Name = "HelperButton";
+            HelperButton.Size = new Size(94, 35);
+            HelperButton.TabIndex = 9;
+            HelperButton.Text = "Helper";
+            HelperButton.UseVisualStyleBackColor = false;
+            HelperButton.Click += HelperButton_Click;
             // 
             // ChosenColorLabel
             // 
             ChosenColorLabel.AutoSize = true;
             ChosenColorLabel.BackColor = Color.Transparent;
             ChosenColorLabel.ForeColor = SystemColors.Info;
-            ChosenColorLabel.Location = new Point(587, 928);
+            ChosenColorLabel.Location = new Point(581, 913);
             ChosenColorLabel.Name = "ChosenColorLabel";
-            ChosenColorLabel.Size = new Size(142, 20);
+            ChosenColorLabel.Size = new Size(156, 20);
             ChosenColorLabel.TabIndex = 13;
-            ChosenColorLabel.Text = "Wybrany kolor: Gray";
+            ChosenColorLabel.Text = "Zmień rozmiar obrazu";
             // 
             // SaveButton
             // 
@@ -195,15 +167,6 @@
             SaveButton.Text = "Save";
             SaveButton.UseVisualStyleBackColor = true;
             SaveButton.Click += SaveButton_Click;
-            // 
-            // BlackButton
-            // 
-            BlackButton.BackColor = Color.Black;
-            BlackButton.Location = new Point(990, 966);
-            BlackButton.Name = "BlackButton";
-            BlackButton.Size = new Size(35, 35);
-            BlackButton.TabIndex = 15;
-            BlackButton.UseVisualStyleBackColor = false;
             // 
             // KolorObrazuCheckBox
             // 
@@ -228,14 +191,14 @@
             // 
             // HeightTextBox
             // 
-            HeightTextBox.Location = new Point(526, 959);
+            HeightTextBox.Location = new Point(520, 944);
             HeightTextBox.Name = "HeightTextBox";
             HeightTextBox.Size = new Size(125, 27);
             HeightTextBox.TabIndex = 18;
             // 
             // widthTextBox
             // 
-            widthTextBox.Location = new Point(657, 959);
+            widthTextBox.Location = new Point(651, 944);
             widthTextBox.Name = "widthTextBox";
             widthTextBox.Size = new Size(125, 27);
             widthTextBox.TabIndex = 19;
@@ -251,13 +214,9 @@
             Controls.Add(HeightTextBox);
             Controls.Add(SizeChengeCheckBox);
             Controls.Add(KolorObrazuCheckBox);
-            Controls.Add(BlackButton);
             Controls.Add(SaveButton);
             Controls.Add(ChosenColorLabel);
-            Controls.Add(YellowButton);
-            Controls.Add(BlueButton);
-            Controls.Add(GreenButton);
-            Controls.Add(Redbutton);
+            Controls.Add(HelperButton);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(cancelButton);
@@ -288,13 +247,9 @@
         private Button cancelButton;
         private Label label1;
         private Label label2;
-        private Button Redbutton;
-        private Button GreenButton;
-        private Button BlueButton;
-        private Button YellowButton;
+        private Button HelperButton;
         private Label ChosenColorLabel;
         private Button SaveButton;
-        private Button BlackButton;
         private CheckBox KolorObrazuCheckBox;
         private CheckBox SizeChengeCheckBox;
         private TextBox HeightTextBox;
