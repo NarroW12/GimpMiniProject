@@ -135,13 +135,13 @@ namespace PrzetwarzanieObrazów
                         {
                             int newWidth = 0;
                             int newHeight = 0;
-                            if (!int.TryParse(widthTextBox.Text, out  newWidth) || !int.TryParse(HeightTextBox.Text, out  newHeight))
+                            if (!int.TryParse(widthTextBox.Text, out newWidth) || !int.TryParse(HeightTextBox.Text, out newHeight))
                             {
                                 MessageBox.Show("Podano nieprawidłowe wartości szerokości i/lub wysokości.", "Błąd", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 //return;
                             }
                             Image resizedImage = ResizeImage(inputPictureBox.Image, newWidth, newHeight);
-                         
+
                             outputPictureBox.Image = resizedImage;
 
                         }

@@ -64,7 +64,6 @@
             inputPictureBox.Location = new Point(48, 86);
             inputPictureBox.Name = "inputPictureBox";
             inputPictureBox.Size = new Size(872, 805);
-            inputPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             inputPictureBox.TabIndex = 1;
             inputPictureBox.TabStop = false;
             // 
@@ -74,7 +73,6 @@
             outputPictureBox.Location = new Point(1018, 86);
             outputPictureBox.Name = "outputPictureBox";
             outputPictureBox.Size = new Size(872, 805);
-            outputPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             outputPictureBox.TabIndex = 2;
             outputPictureBox.TabStop = false;
             // 
